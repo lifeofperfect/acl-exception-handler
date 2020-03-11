@@ -1,0 +1,81 @@
+{% block stylesheet %}
+<style>
+
+#hello-msg{
+  font-size:18px;
+  color: #fff;
+  margin-right:20px
+}
+    
+    .navbar-default {
+        background-color: #0082BB;
+        border-color: #0082BB;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-family: 'Poly', serif; font-size: 25px;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-family: 'Poly', serif; font-size: 20px;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #0082BB;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #0082BB;
+}
+
+body {
+    background-color: #ebeff5;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+</style>
+{% endblock %}
+<nav class="navbar navbar-expand-lg navbar-default navbar-fixed-top">
+    <a class="navbar-brand" href="{% url 'unreacted' %}">Ecobank Compliance</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pending' %}">Pending</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'regularised' %}">Closed</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-2 mt-md-0 text-white">
+    
+            
+          {% if user.is_authenticated %}
+              <span id='hello-msg'>Hello,  <a href="{% url 'password_change' %}" class="text-white " data-toggle="tooltip"  data-placement="bottom" title="Change password">{{ user.username|capfirst }}!</a>
+            {% else %}
+            <p class="text-white">You need to be logged in to continue!! .<a class="text-white" href="{% url 'login' %}">Login</a></p>
+
+            {% endif %}
+        </div>
+    <span ><a id='hello-msg' href='{% url 'logout' %}'> Logout</a></span>
+    {% if request.user.is_staff %}
+    <span ><a id='hello-msg' href='{% url 'register' %}'> Signup-user</a></span>
+    {% endif %}
+  </nav>

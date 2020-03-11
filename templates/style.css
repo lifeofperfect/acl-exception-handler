@@ -1,0 +1,9 @@
+<style>
+      .tableFixHead          { overflow-y: auto; height: 100px; }
+      .tableFixHead th { position: sticky; top: 0; }
+        th {
+            font-family: 'Poly', serif; font-size: 15px;
+    background-color: #0082BB;
+    color: white;
+    }
+</style>

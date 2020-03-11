@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block stylesheet %}
+    <style>
+        form input[type="text"] {
+    text-transform: lowercase;
+}
+    </style>
+{% endblock %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+    <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active"><h1><strong>SIGNUP</strong></h1></li>
+      </ol>
+
+    <div class="limiter">
+        <div style="padding-bottom:10px;" class="container">
+            <h1>Create an account</h1>
+        <p>Please, sign up using the following form:</p>
+        <form action="." method="post">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <div class="container-login100-form-btn">
+						<button class="btn btn-primary">
+							SignUp
+						</button>
+            </div>
+        </form></div>
+
+    </div>
+        {% else %}
+        <h1><strong>Meet you supervisor to signUp</strong></h1>
+{%  endif %}
+{% endblock %}

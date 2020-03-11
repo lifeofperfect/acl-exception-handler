@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'unreacted' %}">Alerts</a>
+        </li>
+        <li class="nav-item">
+        {% with pending_query.count as total_undefined %}
+            {% if not total_undefined %}
+                <a class="nav-link" href="{% url 'pending' %}">Pending</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'pending' %}">Pending <span class="badge badge-danger">{{ total_undefined }}</span></a>
+            {% endif %}
+        {% endwith %}
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link active" href="{% url 'regularised' %}">Closed</a>
+
+      </li>
+      {% if request.user.is_staff %}
+      <li class="nav-item">
+
+          <a class="nav-link" href="{% url 'regularised_staff' %}">All Closed</a>
+
+      </li>
+      {% endif %}
+      </ul>

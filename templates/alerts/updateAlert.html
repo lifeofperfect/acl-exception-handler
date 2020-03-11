@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block stylesheet %}
+    <style>
+        .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+  
+    .left {
+        left: 0;
+        background-color: #F5F5F5;
+        color: #4D4D4D;
+    }
+    
+    .right {
+        right: 0;
+        background-color: #00BFFF;
+        padding-top:50px;
+        color: white;
+    }
+    </style>
+  
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="split left">
+  <div class='container-fluid'>
+    {% include 'navbar.html' %}
+  </div>
+  
+    <div class='container'>
+      <h8>Alert message: <span style='color:Red'>{{ alerts.alias_name }}</span></h8>
+      <div class='jumbotron'>
+      <h3>Reviewed by:<span style='color:green'>{{ alerts.CAMT_Reveiewer }}</span> </h3>
+      <h4>Summary of Incidence: <span style='color:green'>{{ alerts.Summary_Of_Incidence_and_CAMT_observation_during_Investigation }}</span></h3>
+        <div class='row'>
+          <div class="card bg-light mb-3">
+            <div class="card-header">Account Information</div>
+            <div class="card-body">
+              <h3>ID: <span>{{ alerts.id }}</span></h3>
+              <h3>AcccountNumber: <span>{{ alerts.Acccount_Number }}</span></h3>
+              <h3>Account Name: <span>{{ alerts.Account_Name }}</span></h3>
+              <h3>Account class: <span>{{ alerts.ACCOUNT_CLASS }}</span></h3>
+              <h3>Account tier: <span>{{ alerts.account_tier }}</span></h3>
+              <h3>Msisdn: <span>{{ alerts.msisdn }}</span></h3>
+              <h3>Age analysis: <span>{{ alerts.Date_Uploaded|timesince }}</span></h3>
+              <h3>Alias Name: <span>{{ alerts.alias_name }}</span>
+              
+            </div>
+          </div>
+        
+          <div class='row'>
+          <div class="card bg-light mb-3">
+            <div class="card-header">Bank Information</div>
+            <div class="card-body">
+              <h3>Affiliate Code: <span>{{ alerts.Affiliate_Code }}</span></h3>
+              <h3>Affiliate Name: <span>{{ alerts.Affiliate_Name }}</span></h3>
+              <h3>InitiatingBranch: <span>{{ alerts.Initiating_Branch }}</span></h3>
+              <h3>Zone: <span>{{ alerts.Zone }}</span></h3>
+              <h3>Region: <span>{{ alerts.Region }}</span></h3>
+              <h3>Inputter: <span>{{ alerts.Inputter }}</span></h3>
+            <h3>USER ID: <span>{{ alerts.USERID_Inputter }}</span></h3>
+            <h3>Auth ID: <span>{{ alerts.USERID_Authoriser }}</span></h3>
+            </div>
+          </div>
+
+          <div class='row'>
+          <div class="card bg-light mb-3">
+            <div class="card-header">Transaction Info Information</div>
+            <div class="card-body">
+              <h3>Exception Category: <span>{{ alerts.Exception_Category }}</span></h3>
+              <h3>TRN_REF_NO: <span>{{ alerts.Trn_Ref_no }}</span></h3>
+              <h3>DRCR_IND: <span>{{ alerts.DRCR_IND }}</span></h3>
+              <h3>DateDiscovered: <span>{{ alerts.Date_Discovered }}</span></h3>
+              <h3>Currency: <span>{{ alerts.Currency }}</span></h3>
+              <h3>LCYUSDRATE: <span id='rate'>{{ alerts.LCY_USD_RATE }}</span></h3>
+              <h3>AmountInvolvedLCY: <span></span>{{ alerts.Amount_Involved_LCY }}</h3>
+              <h3>Month: <span>{{ alerts.Month }}</span></h3>
+              <h3>Count: <span>{{ alerts.Count2 }}</span></h3>
+              <h3> DrMeanMaxAmt/Old value/rate: <span>{{ alerts.DrMeanMaxAmt }}</span></h3>
+              <h3>CrMeanMaxAmt/New value/rate:  <span>{{ alerts.CrMeanMaxAmt }}</span></h3>
+            </div>
+          </div>
+     
+        </div>    
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="split right">
+  
+  <div class='container'>
+  <main class="flex-shrink-0" role="main">
+  <div class="container">
+    <ol class="breadcrumb my-4">
+                <li class="breadcrumb-item active"><h1><h1 class="mt-5">Form - {{ header }}</h1></h1></li>
+    </ol>
+  </div>
+</main>
+    <form method="post" action="">
+            <div class="container">
+                {% csrf_token %}
+                {{ forms|crispy }}
+                <input type="submit" value="Submit" class='btn btn-primary'>
+            <br/>
+            <br/>
+            <br/>
+            </div>
+        </form>
+        
+        </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+
+  document.getElementById('id_Loss_prevented_LCY').addEventListener('input', function(e){
+    let naira = e.target.value;
+    let pp =document.getElementById('id_Loss_prevented_USD').value
+    var rate = document.getElementById('rate').innerHTML;
+    
+    var convert = parseFloat(naira) / parseFloat(rate)
+    
+    document.getElementById('id_Loss_prevented_USD').value = convert.toFixed(3)
+  })
+
+  
+</script>
+{% endblock %}

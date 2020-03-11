@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+
+    {% include 'style.css' %}
+{% endblock %}
+
+{% block content %}
+    <div class='container'>
+    {% include 'status.html' %}
+</div>
+<div class='container-fluid'>
+    {% include 'navigation_closed.html' %}
+    <div class="row mt-7">
+    <div class="table-responsive">
+        <table id='alertTable' class="table table-striped table-bordered table-sm tableFixHead">
+            <tr>
+                <th>ID</th>
+                <th>Exception</th>
+                <th>Exception Type</th>
+                <th>Affiliate Code</th>
+                <th>Affiliate name</th>
+                <th>Initiating Branch</th>
+                <th>Zone</th>
+                <th>Region</th>
+                <th>Account Name</th>
+                <th>Acccount Number</th>
+                <th>Camt Observation</th>
+                <th>Operator Response</th>
+                <th>DATE DISCOVERED</th>
+                <th>Date Regularized</th>
+                <th>RootCause tag</th>
+                <th>Rootcause Category</th>
+                <th>Status</th>
+                <th>CURRENCY</th>
+                <th>LCY/USD RATE</th>
+                <th>Amount Involved LCY</th>
+                <th>Amount At risk</th>
+                <th>Loss Prevented LCY</th>
+                <th>Loss Prevented USD</th>
+                <th>Inputter</th>
+                <th>Authoriser</th>
+                <th>User Id</th>
+                <th>Auth ID</th>
+                <th>Camt Reviewer</th>
+                <th>Month</th>
+                <th>Activity</th>
+                <th>Loss Category</th>
+            </tr>
+            {% if pendingQuery %}
+                {% for pending in pendingQuery %}
+                    <tr id="pending-{{pending.id}}">
+                        <td class="font-weight-bold">{{ pending.id }}</td>
+                        <td>{{ pending.Exception_Category }}</td>
+                        <td>{{ pending.Exception_By_Category_Type }}</td>
+                        <td>{{ pending.Affiliate_Code }}</td>
+                        <td>{{ pending.Affiliate_Name }}</td>
+                        <td>{{ pending.Initiating_Branch }}</td>
+                        <td>{{ pending.Zone }}</td>
+                        <td>{{ pending.Region }}</td>
+                        <td>{{ pending.Account_Name }}</td>
+                        <td>{{ pending.Acccount_Number }}</td>
+                        <td>{{ pending.Summary_Of_Incidence_and_CAMT_observation_during_Investigation }}</td>
+                        <td>{{ pending.OPERATORS_RESPONSE }}</td>
+                        <td>{{ pending.Date_Discovered }}</td>
+                        <td>{{ pending.Date_Regularised|timesince }}</td>
+                        <td>{{ pending.Root_Cause_Tag }}</td>
+                        <td>{{ pending.Category_By_Root_Cause }}</td>
+                        <td>{{ pending.Status_REGULARIZED_UNREGULARIZED }}</td>
+                        <td>{{ pending.Currency }}</td>
+                        <td>{{ pending.LCY_USD_RATE }}</td>
+                        <td>{{ pending.Amount_Involved_LCY }}</td>
+                        <td>{{ pending.Amount_at_Risk_LCY }}</td>
+                        <td>{{ pending.Loss_prevented_LCY }}</td>
+                        <td>{{ pending.Loss_prevented_USD }}</td>
+                        <td>{{ pending.Inputter }}</td>
+                        <td>{{ pending.Authoriser }}</td>
+                        <td>{{ pending.USERID_Inputter }}</td>
+                        <td>{{ pending.USERID_Authoriser }}</td>
+                        <td>{{pending.CAMT_Reveiewer}}</td>
+                        <td>{{ pending.Month }}</td>
+                        <td>{{ pending.Activity }}</td>
+                        <td>{{ pending.Loss_Category }}</td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+               
+                    <h1>None</h1>
+            {% endif %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

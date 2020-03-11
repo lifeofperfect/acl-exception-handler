@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for alert in alerts %}
+        {{alert.Exception_Category}}<br/>
+        {{alert.Affiliate_Code}}
+        {{alert.statusCheck}}
+    {% endfor %}
+
+{% endblock %}

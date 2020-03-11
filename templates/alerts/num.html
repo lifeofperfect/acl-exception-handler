@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+
+    {% include 'style.css' %}
+{% endblock %}
+
+{% block content %}
+<div class='container-fluid'>
+<br/>
+<h2>Correlation</h2>
+<br/>
+<br/>
+  <div class="row mt-10">
+  <div class="table-responsive">
+    <table id='alertTable' class="table table-striped table-bordered table-sm tableFixHead">
+      <thead>
+        <tr>
+          <th>ID</th>
+                <th>Acccount Number</th>
+                <th>Account Name</th>
+                <th>Exception</th>
+                <th>Exception Type</th>
+                <th>Camt Reviewer</th>
+                <th>Phone Number</th>
+                <th>Date Regularized</th>
+                <th>time since</th>
+                <th>CURRENCY</th>
+                <th>Loss Prevented USD</th>
+                <th>Trn_Ref_no</th>
+                <th>RootCause tag</th>
+                <th>Activity</th>
+                <th>Status</th>
+                <th>Rootcause Category</th>
+                <th>Affiliate Code</th>
+                <th>Initiating Branch</th>
+                <th>Zone</th>
+                <th>Region</th>
+                <th>Inputter</th>
+                <th>Authoriser</th>
+                <th>User Id</th>
+                <th>Auth ID</th>
+                <th>Camt Observation</th>
+                <th>Operator Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+          <tr id="object-{{object.id}}">
+            <td>{{ object.id }}</td>
+            <td>{{ object.Acccount_Number }}</td>
+            <td>{{ object.Account_Name }}</td>
+            <td>{{ object.Exception_Category }}</td>
+            <td>{{ object.Exception_By_Category_Type }}</td>
+            <td>{{ object.CAMT_Reveiewer }}</td>
+            <td>{{ object.msisdn }}</td>
+            <td>{{ object.Date_Regularised }}</td>
+            <td>{{ object.Date_Regularised|timesince }} ago.</td>
+            <td>{{ object.Currency }}</td>
+            <td>{{ object.Loss_prevented_USD }}</td>
+            <td>{{ object.Trn_Ref_no }}</td>
+            <td>{{ object.Root_Cause_Tag }}</td>
+            <td>{{ object.Activity }}</td>
+            <td>{{ object.Status_REGULARIZED_UNREGULARIZED }}</td>
+            <td>{{ object.Category_By_Root_Cause }}</td>
+            <td>{{ object.Affiliate_Code }}</td>
+            <td>{{ object.Initiating_Branch }}</td>
+            <td>{{ object.Zone }}</td>
+            <td>{{ object.Region }}</td>
+            <td>{{ object.Inputter }}</td>
+            <td>{{ object.Authoriser }}</td>
+            <td>{{ object.USERID_Inputter }}</td>
+            <td>{{ object.USERID_Authoriser }}</td>
+            <td>{{ object.Summary_Of_Incidence_and_CAMT_observation_during_Investigation }}</td>
+            <td>{{ object.OPERATORS_RESPONSE }}</td>
+          </tr>
+        {% empty %}
+        {% if request.GET.q %}
+          <h1 class='display-2'>Not treated yet</h1>
+        {% else %}
+          <h1 class='display-2'>Not treated yet</h1>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

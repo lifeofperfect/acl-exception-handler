@@ -1,0 +1,30 @@
+<nav aria-label="Page navigation example">
+    <div class="pagination">
+        {% if queryset.has_previous %}
+            <a class='pagination-action' href="?page=1">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+    
+            </a>
+            <a class="pagination-action" href="?page={{ queryset.previous_page_number }}">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+              </a>
+        {% endif %}
+    
+        {% for num in queryset.paginator.page_range %}
+            {% if queryset.number == num %}
+                <span class="pagination-number pagination-current">{{ num }}</span>
+                {% elif num > queryset.number|add:'-3' and num < queryset.number|add:'3' %}
+                <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+    
+        {% if queryset.has_next %}
+            <a class="pagination-action" href="?page={{ queryset.next_page_number }}">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            <a class="pagination-action" href="?page={{ queryset.paginator.num_pages }}">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </a>
+        {% endif %}
+    </div>
+</nav>
