@@ -1,3 +1,4 @@
+{% if request.user.is_staff %}
 <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link" href="{% url 'unreacted' %}">Alerts</a>
@@ -16,7 +17,7 @@
           <a class="nav-link active" href="{% url 'regularised' %}">Closed</a>
 
       </li>
-      {% if request.user.is_staff %}
+      {% if request.user.is_superuser %}
       <li class="nav-item">
 
           <a class="nav-link" href="{% url 'regularised_staff' %}">All Closed</a>
@@ -24,3 +25,4 @@
       </li>
       {% endif %}
       </ul>
+      {% endif %}

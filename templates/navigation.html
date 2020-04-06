@@ -1,7 +1,15 @@
 <ul class="nav nav-tabs">
-        <li class="nav-item">
+        {% if branch_view %}
+          <li class="nav-item">
+          <a class="nav-link active" href="{% url 'branch_list' %}">Alerts</a>
+  
+        </li>
+        {% else %}
+          <li class="nav-item">
           <a class="nav-link active" href="{% url 'unreacted' %}">Alerts</a>
         </li>
+        {% endif %}
+        
         <li class="nav-item">
         {% with pending_query.count as total_undefined %}
             {% if not total_undefined %}
@@ -16,7 +24,7 @@
           <a class="nav-link" href="{% url 'regularised' %}">Closed</a>
 
       </li>
-      {% if request.user.is_staff %}
+      {% if request.user.is_superuser %}
       
       <li class="nav-item">
         {% with pendingQuery.count as total_undefined %}

@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load crispy_forms_tags %}
+
+{% block sheet %}
+
+
+      
+{% endblock %}
+
+{% block content %}
+    <div class='container'>
+    <h2 class='text-center'>Log Exceptions</h2>
+
+    <form method='post' action=''>
+    {% csrf_token %}
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <label>Exception Category</label>
+                {% render_field form.Exception_Category placeholder='Exception Category' class="form-control" %}
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Exception Type</label>
+                {% render_field form.Exception_By_Category_Type class="form-control" %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Affiliate Name</label>
+                {% render_field form.Affiliate_Name placeholder="Affiliate Name" class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Affiliate Code</label>
+                {% render_field form.Affiliate_Code placeholder="Affiliate code" class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Initiating Branch</label>
+                {% render_field form.Initiating_Branch placeholder='Initiating branch' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Zone</label>
+                {% render_field form.Zone placeholder='zone' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Account Name</label>
+                {% render_field form.Account_Name placeholder='Account Name' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Account Number</label>
+                {% render_field form.Acccount_Number placeholder='Account Number' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Phone Number</label>
+                {% render_field form.msisdn placeholder='msisdn' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Account class</label>
+                {% render_field form.ACCOUNT_CLASS placeholder='Account Class' class='form-control' %}
+            </div>
+            
+            <div class='col-md-3 form-group'>
+                <label>Account Tier</label>
+                {% render_field form.account_tier placeholder='Acount tier' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Region</label>
+                {% render_field form.Region placeholder='Region' class='form-control' %}
+            </div>
+            
+            <div class='col-md-3 form-group'>
+                <label>Trn Ref Number</label>
+                {% render_field form.Trn_Ref_no placeholder='Trn Ref No' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>DRCR_IND</label>
+                {% render_field form.DRCR_IND class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Account Current Balance</label>
+                {% render_field form.ACY_CURR_BALANCE placeholder='current balance' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Account open date</label>
+                {% render_field form.AC_OPEN_DATE placeholder='current balance' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Pnd Status</label>
+                {% render_field form.AcctPND placeholder='Pnd status' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Transaction count</label>
+                {% render_field form.TnxCount placeholder='Tnx count' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Dr mean max amount</label>
+                {% render_field form.DrMeanMaxAmt placeholder='Dr mean max amount' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Cr mean max amount</label>
+                {% render_field form.CrMeanMaxAmt placeholder='cr mean max amount' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Date discovered</label>
+                {% render_field form.Date_Discovered placeholder='Y/m/d' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Month</label>
+                {% render_field form.Month placeholder='Month' class='form-control' %}
+            </div>
+
+            <div class='col-md-6 form-group'>
+                <label>Summary of incident</label>
+                {% render_field form.Summary_Of_Incidence_and_CAMT_observation_during_Investigation placeholder='Summary of incident' class='form-control' %}
+            </div>
+            <div class='col-md-6 form-group'>
+                <label>Operators Response</label>
+                {% render_field form.OPERATORS_RESPONSE  placeholder='Operators response' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Root cause tag</label>
+                {% render_field form.Root_Cause_Tag class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Category cause tag</label>
+                {% render_field form.Category_By_Root_Cause class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Status</label>
+                {% render_field form.Status_REGULARIZED_UNREGULARIZED class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Activity</label>
+                {% render_field form.Activity class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Currency</label>
+                {% render_field form.Currency placeholder='Currency' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>local currency to Usd Rate</label>
+                {% render_field form.LCY_USD_RATE placeholder='usd rate' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>loss prevented lcy</label>
+                {% render_field form.Loss_prevented_LCY placeholder='amount at risk lcy' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>loss prevented (USD)</label>
+                {% render_field form.Loss_prevented_USD placeholder='amount at risk lcy' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Amount involved Lcy</label>
+                {% render_field form.Amount_Involved_LCY placeholder='amount involoved' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Amount at risk Lcy</label>
+                {% render_field form.Amount_at_Risk_LCY placeholder='amount at risk lcy' class='form-control' %}
+            </div>
+            
+            
+            <div class='col-md-3 form-group'>
+                <label>Inputter</label>
+                {% render_field form.Inputter placeholder='inputter' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>Authoriser</label>
+                {% render_field form.Authoriser placeholder='Authoriser' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>UserID inputter</label>
+                {% render_field form.USERID_Inputter placeholder='userid inputter' class='form-control' %}
+            </div>
+            <div class='col-md-3 form-group'>
+                <label>UserID Authoriser</label>
+                {% render_field form.USERID_Authoriser placeholder='userid authoriser' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Onboarding date</label>
+                {% render_field form.ONBOARDING_DATE placeholder='Y/m/d' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Status check</label>
+                {% render_field form.statusCheck placeholder='userid authoriser' class='form-control' %}
+            </div>
+
+            <div class='col-md-3 form-group'>
+                <label>Decision</label>
+                {% render_field form.camtDecision placeholder='Decision' class='form-control' %}
+            </div>   
+        </div>
+    <button class="btn btn-success ml-0 btn-lg btn-block" type="submit">Save</button>
+    </form>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}
+
+{% block javascript %}
+{% endblock javascript%}

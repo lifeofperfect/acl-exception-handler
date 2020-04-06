@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'acl.apps.AclConfig',
+    
 
     'import_export',
 
@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'widget_tweaks',
+
+    'acl.apps.AclConfig',
+    'branch.apps.BranchConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'acl.middlewares.RoleMiddleware',
 ]
 
 ROOT_URLCONF = 'foo.urls'
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'foo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aclschema',
+        'NAME': 'acl_test',
         'USER': 'root',
         'PASSWORD': 'calyster',
         'HOST': 'localhost',
@@ -148,7 +152,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'foo','static'))
 
-LOGIN_REDIRECT_URL = 'unreacted'
+LOGIN_REDIRECT_URL = 'index'
 
 LOGOUT_REDIRECT_URL = 'login1'
 
@@ -157,3 +161,6 @@ LOGIN_URL = 'login1'
 LOGOUT_URL = 'logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+

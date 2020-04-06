@@ -23,7 +23,8 @@
         <p>Please, sign up using the following form:</p>
         <form action="." method="post">
             {{ form|crispy }}
-            {% csrf_token %}
+            
+            {% csrf_token %}<!--secure coding-prevent sql injection -->
             <div class="container-login100-form-btn">
 						<button class="btn btn-primary">
 							SignUp

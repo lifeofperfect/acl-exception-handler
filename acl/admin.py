@@ -11,7 +11,7 @@ admin.site.index_title = "Acl Alerts"
 class AclAdmin(ImportExportModelAdmin):
     list_display = ['Account_Name','Acccount_Number','Exception_Category','Affiliate_Code','Affiliate_Name','Initiating_Branch','Date_Discovered','Amount_Involved_LCY']
     list_filter = ['statusCheck','camtDecision','Status_REGULARIZED_UNREGULARIZED','Exception_By_Category_Type','Affiliate_Code','Date_Discovered']
-    search_fields = ['Exception_Category','Affiliate_Code','Date_Discovered','id']
+    search_fields = ['Exception_Category','Affiliate_Code','Date_Discovered','id','role']
 
 admin.site.register(Dropdown_loss_category)
 admin.site.register(Dropdown_activity)

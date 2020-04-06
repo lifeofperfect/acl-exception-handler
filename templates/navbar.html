@@ -46,15 +46,22 @@ body {
 </style>
 {% endblock %}
 <nav class="navbar navbar-expand-lg navbar-default navbar-fixed-top">
-    <a class="navbar-brand" href="{% url 'unreacted' %}">Ecobank Compliance</a>
+  {% if role_camt %}
+  <a class="navbar-brand" href="{% url 'unreacted' %}">Ecobank Compliance</a>
+  {% elif role_branch %}
+  <a class="navbar-brand" href="{% url 'branch_unreact' %}">Ecobank Compliance</a>
+  {% else %}
+  <a class="navbar-brand" href="{% url 'index' %}">Ecobank Compliance</a>
+  {% endif %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        {% if role_camt %}
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'unreacted' %}">Unreacted <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'pending' %}">Pending</a>
@@ -62,6 +69,19 @@ body {
         <li class="nav-item">
           <a class="nav-link" href="{% url 'regularised' %}">Closed</a>
         </li>
+        {% elif role_branch %}
+          <li class="nav-item active">
+          <a class="nav-link" href="{% url 'branch_unreact' %}">Exceptions<span class="sr-only">(current)</span></a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'branch_pending' %}">Pending</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'branch_closed' %}">Closed</a>
+        </li>
+        {% else %}
+        <li></li>
+        {% endif %}
       </ul>
     </div>
     <div class="mt-2 mt-md-0 text-white">
@@ -75,7 +95,7 @@ body {
             {% endif %}
         </div>
     <span ><a id='hello-msg' href='{% url 'logout' %}'> Logout</a></span>
-    {% if request.user.is_staff %}
+    {% if request.user.is_superuser %}
     <span ><a id='hello-msg' href='{% url 'register' %}'> Signup-user</a></span>
     {% endif %}
   </nav>

@@ -81,8 +81,13 @@ class Alert(models.Model):
         
 
     )
+
+    roles = (
+        ('Branch', 'Branch'),
+        ('camt', 'camt')
+    )
+
     decision = (
-        ('Unreacted', 'Unreacted'),
         ('TruePositive', 'TruePositive'),
         ('FalsePositive', 'FalsePositive'),
         
@@ -135,10 +140,10 @@ class Alert(models.Model):
     alias_name = models.CharField(max_length=50, null=True, blank=True)
     Date_Uploaded = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     age_analysis = models.IntegerField(null=True, blank=True)
-    
+    role = models.CharField(choices = roles, max_length=200, default='', null=True, blank=True)
     alert_message = models.CharField(max_length=150, null=True, blank=True)
     statusCheck = models.CharField(choices=choices, default='', max_length=20, null=True, blank=True)
-    camtDecision = models.CharField(choices=decision,default='Unreacted', max_length=20, null=True, blank=True)
+    camtDecision = models.CharField(choices=decision,default='', max_length=20, null=True, blank=True)
     
     class Meta:
         ordering = ['-id']

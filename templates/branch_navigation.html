@@ -1,0 +1,34 @@
+<div class='row'>
+<ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a {% if react %}class="nav-link active"{% else %}class="nav-link"{% endif %}  href="{% url 'branch_unreact' %}">Unreacted</a>
+        </li>
+        <li class="nav-item">
+
+            {% if not pending_query %}
+                <a {% if pending %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'branch_pending' %}">Pending</a>
+            {% else %}
+                <a {% if pending %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'branch_pending' %}">Pending <span class="badge" style='background:red;'><span style='color:white'>{{ pending_query }}</span></span></a>
+            {% endif %}
+        </li>
+        <li class="nav-item">
+
+          <a {% if closed %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'branch_closed' %}">Closed</a>
+
+      </li>
+      {% if request.user.is_superuser %}
+      
+      <li class="nav-item">
+        {% with pendingQuery.count as total_undefined %}
+        {% if not total_undefined %}
+          <a class="nav-link" href="{% url 'super_closed' %}">All closed</a>
+          {% else %}
+            <a class="nav-link" href="{% url 'super_closed' %}">All closed <span class="badge badge-success">{{ total_undefined }}</span></a>
+      {% endif %}
+      {% endwith %}
+      </li>
+        
+      {% endif %}
+      </ul>
+
+      </div>

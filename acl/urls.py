@@ -1,18 +1,20 @@
 from django.urls import path
-from .views import alertUnreactedView, alertPending, alertClosed_user,alertClosed_staff, acl_update, registerPage, loginPage, logoutUser
+from .views import alertUnreactedView, alertPending, alertClosed_user,alertClosed_staff, acl_update, registerPage, loginPage, logoutUser 
 from django.contrib.auth import views as auth_views 
 from . import views
 
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    
+    path('create/', views.create_alert, name='create_alert'),
     path('search/', views.SearchListView.as_view(), name='search'),
     path('<int:id>/false', views.falseUpdate, name='falseUpdate'),
     path('<int:id>/true', views.truePositive, name='trueUpdate'),
-    path('', alertUnreactedView, name='unreacted'),
+    path('unreacted/', alertUnreactedView, name='unreacted'),
     path('register/', registerPage, name='register'),
     path('login1/', loginPage, name='login1'),
     path('logout/', logoutUser, name='logout'),
-    #path('api/update/<str:pk>/', views.ApiTrueUpdate, name='trueUpdate'),
     path('pending/', alertPending, name='pending'),
     path('regularised/', alertClosed_user, name='regularised'),
     path('regularised-staff/', alertClosed_staff, name='regularised_staff'),

@@ -10,7 +10,12 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poly:400i&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poly:400i&display=swap" rel="stylesheet">
+
+    <link href="{% static 'ui-themes/jquery-ui.min.css' %}" rel='stylesheet'/>
+    <link href="{% static 'ui-themes/jquery-ui.structure.min.css' %}" rel='stylesheet'/>
+    <link href="{% static 'ui-themes/jquery-ui.theme.min.css' %}" rel='stylesheet'/>
+ 
     
     {% block sheet %}
     {% endblock %}
@@ -33,20 +38,18 @@
     {% block content %}
     {% endblock content %}
     </main>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-      
 
-    function refreshPage() { 
-        location.reload(); 
-    }
-    </script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'ui-themes/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  
+    
+   
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  
+      
+    
+    
     {% block javascript %}
     {% endblock javascript%}
   </body>
