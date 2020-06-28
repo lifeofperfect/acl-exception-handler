@@ -5,12 +5,16 @@
     {% include 'style.css' %}
 {% endblock %}
 
+{% block title %}
+    Pending Exceptions
+{% endblock title %}
+
 {% block content %}
 <h3 class='text-center'>Pending alert</h1>
 <div class='container'>
     {% include 'status.html' %}
 </div>
-<div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Alert</a> </div>
+<div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i> Log Exceptions</a> </div>
 
 {% include 'branch_navigation.html' %}
 <div class='container-fluid'>
@@ -39,7 +43,7 @@
             {% if pendingQuery %}
                 {% for pending in pendingQuery %}
                     <tr id="pending-{{pending.id}}">
-                        <td class="font-weight-bold"><a href="{% url 'response' pending.id %}">{{ pending.id }}</a></td>
+                        <td class="font-weight-bold">{{ pending.id }}</td>
                         <td>{{ pending.Exception_Category }}</td>
                         <td>{{ pending.Exception_By_Category_Type }}</td>
                         <td>{{ pending.Affiliate_Code }}</td>

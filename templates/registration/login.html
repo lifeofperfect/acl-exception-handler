@@ -14,13 +14,13 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #7abecc !important;
+			background: #EFEFEF !important;
 		}
 		.user_card {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #74cfbf;
+			background: #0A96CC;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -67,7 +67,7 @@
 		}
 
 		#messages{
-			background-color: grey;
+			background-color: #F2406A;
 			color: #fff;
 			padding: 10px;
 			margin-top: 10px;
@@ -104,11 +104,16 @@
 				 				<input class="btn login_btn" type="submit" value="Login">
 				   			</div>
 					</form>
-
+						
 				</div>
-                {% for message in messages %}
+				
+					{% for message in messages %}
+					
                     <p id='messages'>{{ message }}</p>
-                {% endfor %}
+					
+                	{% endfor %}
+				
+                
 				
 			</div>
 		</div>

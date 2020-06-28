@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    User
+{% endblock title %}
+
 {% block content %}
     {% for alert in alerts %}
         {{alert.Exception_Category}}<br/>

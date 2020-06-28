@@ -5,6 +5,10 @@
     {% include 'style.css' %}
 {% endblock %}
 
+{% block title %}
+    CLosed Exception
+{% endblock %}
+
 {% block content %}
 <h3 class='text-center'>Closed Alert</h1>
     <div class='container'>
@@ -12,7 +16,7 @@
 </div>
 <br/>
 <br/>
-<div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Alert</a> </div>
+<div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i> Log Exceptions</a> </div>
 
     {% include 'branch_navigation.html' %}
 <div class='container-fluid'>

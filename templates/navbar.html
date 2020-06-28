@@ -95,7 +95,9 @@ body {
             {% endif %}
         </div>
     <span ><a id='hello-msg' href='{% url 'logout' %}'> Logout</a></span>
-    {% if request.user.is_superuser %}
-    <span ><a id='hello-msg' href='{% url 'register' %}'> Signup-user</a></span>
+    {% if role_camt %}
+    {% if request.user.is_staff %}
+      <span ><a id='hello-msg' href='{% url 'register' %}'> Signup-user</a></span>
+    {% endif %}
     {% endif %}
   </nav>

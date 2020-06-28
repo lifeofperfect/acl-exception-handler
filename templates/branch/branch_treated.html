@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    closed
+{% endblock %}
+
 {% block content %}
     <br/>
     <br/>
-            <div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Alert</a> </div>
+            <div class='pull-right'><a href="{% url 'branch_create' %}" class='btn btn-success btn-lg'><i class="fa fa-plus-circle" aria-hidden="true"></i>Log Exceptions</a> </div>
 
     {% include 'branch_navigation.html' %}
     <div class='container-fluid'>
